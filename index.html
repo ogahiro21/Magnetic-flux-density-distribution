@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <title>実験6 課題</title>
 </head>
+
 <body>
   <div id="header">磁束密度分布の数値演算と計測</div>
   <h2>正n角型中心の磁束密度の計算</h2>
@@ -12,15 +14,35 @@
   <p>電流値や寸法を入力すると正n角型の中心に発生する磁束密度を計算できるプログラム</p>
   <div id="work-box">
     <div id="input-form">
-      <div id="current">電流 : <input id="i-val" type="number" min="1"  onChange="calc()"></div>
-      <div id="corner">角数 : <input  id="c-val" type="number" min="3"  onChange="calc()" ></div>
-      <div id="radius">半径 : <input  id="r-val" type="number" min="1"  onChange="calc()" max="20"></div>
+      <div id="current">電流 : <input id="i-val" type="number" min="1" onChange="calc()" value="1"></div>
+      <div id="corner">角数 : <input  id="c-val" type="number" min="3" onChange="calc()" value="3"></div>
+      <div id="radius">半径 : <input  id="r-val" type="number" min="1" onChange="calc()" value="100" max="200"></div>
+      <div id="result">磁束密度 : <span id="ans">NULL<span></div>
     </div>
     <canvas id="polygon" width=640 height=480></canvas>
   </div>
 </body>
+<script src="polygon.js"></script>
 <script>
-let calc = (tgt) => {
-}
+  window.addEventListener('load', () => {
+    calc();
+  });
+  let calc = () => {
+    let canvas  = document.getElementById("polygon");
+    let context = canvas.getContext("2d");
+    let corner  = document.getElementById("c-val").value;
+    let radius  = document.getElementById("r-val").value;
+    let current = document.getElementById("i-val").value;
+    let u0      = 4 * Math.PI * Math.pow(10,-7); 
+    let ans     = u0 * current * corner / (2 * Math.PI * radius * Math.tan(Math.PI/corner));
+
+    // 図形描画
+    context.clearRect(0, 0, 640, 480);
+    strokePolygon(context, 320, 240, radius, corner, 270);
+
+    // 答え表示
+    document.getElementById("ans").innerHTML = ans;
+  }
 </script>
+
 </html>

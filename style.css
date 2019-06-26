@@ -45,7 +45,7 @@ body{
   vertical-align: top;
 }
 
-#corner , #radius{
+#corner , #radius, #result{
   margin-top: 30px;
 }
 
