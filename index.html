@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>実験6 課題</title>
+</head>
+<body>
+  <div id="header">磁束密度分布の数値演算と計測</div>
+  <h2>正n角型中心の磁束密度の計算</h2>
+  <hr class="under-line">
+  <p>電流値や寸法を入力すると正n角型の中心に発生する磁束密度を計算できるプログラム</p>
+  <div id="work-box">
+    <div id="input-form">
+      <div id="current">電流 : <input id="i-val" type="number" min="1"  onChange="calc()"></div>
+      <div id="corner">角数 : <input  id="c-val" type="number" min="3"  onChange="calc()" ></div>
+      <div id="radius">半径 : <input  id="r-val" type="number" min="1"  onChange="calc()" max="20"></div>
+    </div>
+    <canvas id="polygon" width=640 height=480></canvas>
+  </div>
+</body>
+<script>
+let calc = (tgt) => {
+}
+</script>
+</html>
