@@ -52,6 +52,7 @@ body{
 
 input{
   height: 30px;
+  width: 100px;
   background: #f2f2f2;
   color: #5a5a5a;
   border-radius: 10px;
@@ -63,4 +64,11 @@ canvas{
   margin-left: 100px;
   border-radius: 10px;
   border: 1px solid #5a5a5a;
+}
+
+@media screen and (max-width: 1300px) {
+  canvas{
+    margin: 0 !important;
+    max-width: 100%;
+  }
 }

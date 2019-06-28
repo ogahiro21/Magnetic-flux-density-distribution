@@ -14,10 +14,10 @@
   <p>電流値や寸法を入力すると正n角型の中心に発生する磁束密度を計算できるプログラム</p>
   <div id="work-box">
     <div id="input-form">
-      <div id="current">電流 : <input id="i-val" type="number" min="1" onChange="calc()" value="1"></div>
+      <div id="current">電流 : <input id="i-val" type="number" min="1" onChange="calc()" value="1"> [A]</div>
       <div id="corner">角数 : <input  id="c-val" type="number" min="3" onChange="calc()" value="3"></div>
-      <div id="radius">半径 : <input  id="r-val" type="number" min="1" onChange="calc()" value="100" max="200"></div>
-      <div id="result">磁束密度 : <span id="ans">NULL<span></div>
+      <div id="radius">半径 : <input  id="r-val" type="number" min="1" onChange="calc()" value="100" max="200"> [m]</div>
+      <div id="result">磁束密度 : <span id="ans">NULL<span> [T]</div>
     </div>
     <canvas id="polygon" width=640 height=480></canvas>
   </div>
@@ -33,8 +33,7 @@
     let corner  = document.getElementById("c-val").value;
     let radius  = document.getElementById("r-val").value;
     let current = document.getElementById("i-val").value;
-    let u0      = 4 * Math.PI * Math.pow(10,-7); 
-    let ans     = u0 * current * corner / (2 * Math.PI * radius * Math.tan(Math.PI/corner));
+    let ans     = 2 * current * corner * Math.tan(Math.PI/corner)*Math.pow(10, -7)/radius;
 
     // 図形描画
     context.clearRect(0, 0, 640, 480);
